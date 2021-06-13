@@ -1,0 +1,41 @@
+{
+  "name": "kitchensink",
+  "version": "0.0.1",
+  "files": [
+    "README.md"
+  ],
+  "dependencies": {
+    "@forrestjs/hooks": "4.0.0-alpha.12",
+    "@forrestjs/react-mui": "0.0.1-alpha.8",
+    "@forrestjs/react-root": "0.0.1-alpha.8",
+    "@forrestjs/react-router": "0.0.1-alpha.8"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "clean": "rimraf node_modules && rimraf dist"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
