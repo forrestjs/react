@@ -1,6 +1,5 @@
 {
   "name": "@forrestjs/react-root",
-  "private": false,
   "version": "0.0.1-alpha.1",
   "files": [
     "dist",
@@ -36,5 +35,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "gitHead": "ce1d1d414ba21b351a59002ba95b80ca662066b3"
 }

@@ -1,6 +1,5 @@
 {
-  "name": "root",
-  "private": false,
+  "name": "@ForrestJS/react-libraries",
   "scripts": {
     "boot": "npm install && lerna bootstrap",
     "clean": "lerna run clean && lerna clean --yes && rm -rf node_modules",
