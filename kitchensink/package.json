@@ -6,9 +6,9 @@
   ],
   "dependencies": {
     "@forrestjs/hooks": "4.0.0-alpha.12",
-    "@forrestjs/react-mui": "0.0.1-alpha.8",
-    "@forrestjs/react-root": "0.0.1-alpha.8",
-    "@forrestjs/react-router": "0.0.1-alpha.8"
+    "@forrestjs/react-mui": "0.0.1-alpha.9",
+    "@forrestjs/react-root": "0.0.1-alpha.9",
+    "@forrestjs/react-router": "0.0.1-alpha.9"
   },
   "scripts": {
     "start": "react-scripts start",
