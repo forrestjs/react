@@ -36,5 +36,8 @@
       "last 1 safari version"
     ]
   },
-  "gitHead": "ce1d1d414ba21b351a59002ba95b80ca662066b3"
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "5d317e9d863b20f91b1db0f815030aeb4640d090"
 }
