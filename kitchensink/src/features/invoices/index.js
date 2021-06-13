@@ -17,11 +17,6 @@ export const invoices = ({ registerAction }) => {
   });
 
   registerAction({
-    hook: '$LAYOUT_TITLE',
-    handler: () => 'Foobar',
-  });
-
-  registerAction({
     hook: '$DASHBOARD_ITEM',
     handler: () => ({
       lg: 8,
