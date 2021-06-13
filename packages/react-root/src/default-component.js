@@ -1,3 +1,5 @@
+import React from 'react';
+
 export const defaultComponent = (
   <div>
     No root component was defined.
