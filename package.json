@@ -1,6 +1,6 @@
 {
   "name": "root",
-  "private": true,
+  "private": false,
   "scripts": {
     "boot": "npm install && lerna bootstrap",
     "clean": "lerna run clean && lerna clean --yes && rm -rf node_modules",
