@@ -4,7 +4,8 @@
   "scripts": {
     "boot": "npm install && lerna bootstrap",
     "clean": "lerna run clean && lerna clean --yes && rm -rf node_modules",
-    "deploy": "lerna run build && lerna publish"
+    "deploy": "lerna run build && lerna publish",
+    "force-deploy": "lerna run build && lerna publish --force-publish"
   },
   "devDependencies": {
     "@babel/cli": "^7.14.5",
