@@ -26,7 +26,7 @@ export const dashboard = ({
 
   registerAction({
     hook: '$LAYOUT_TITLE',
-    handler: () => 'Dashboard',
+    handler: () => 'JSON Placeholder UI',
   });
 
   registerAction({

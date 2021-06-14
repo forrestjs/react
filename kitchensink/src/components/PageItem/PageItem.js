@@ -5,8 +5,15 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 
+import PageItemTitle from './PageItemTitle';
+
 const useStyles = makeStyles((theme) => ({
   paper: {
+    display: 'flex',
+    overflow: 'auto',
+    flexDirection: 'column',
+  },
+  inner: {
     padding: theme.spacing(2),
     display: 'flex',
     overflow: 'auto',
@@ -17,13 +24,30 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const PageItem = ({ children, ...props }) => {
+export const PageItem = ({
+  title,
+  subtitle,
+  fixedHeight,
+  children,
+  ...props
+}) => {
   const classes = useStyles();
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+  const fixedHeightPaper = clsx(
+    classes.paper,
+    fixedHeight && classes.fixedHeight,
+  );
+
+  const titleBar =
+    title || subtitle ? (
+      <PageItemTitle title={title} subtitle={subtitle} />
+    ) : null;
 
   return (
     <Grid item {...props}>
-      <Paper className={fixedHeightPaper}>{children}</Paper>
+      <Paper className={fixedHeightPaper}>
+        {titleBar}
+        <div className={classes.inner}>{children}</div>
+      </Paper>
     </Grid>
   );
 };
@@ -32,4 +56,5 @@ PageItem.defaultProps = {
   xs: 12,
   md: 12,
   lg: 12,
+  fixedHeight: false,
 };

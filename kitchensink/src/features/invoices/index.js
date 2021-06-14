@@ -19,6 +19,7 @@ export const invoices = ({ registerAction }) => {
   registerAction({
     hook: '$DASHBOARD_ITEM',
     handler: () => ({
+      title: 'Invoices',
       lg: 8,
       md: 6,
       component: InvoicesDashboard,

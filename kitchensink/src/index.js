@@ -4,6 +4,7 @@ import { runHookApp } from '@forrestjs/hooks';
 import reactRoot from '@forrestjs/react-root';
 import reactMUI from '@forrestjs/react-mui';
 import reactRouter from '@forrestjs/react-router';
+import reactAxios from './react-axios';
 
 // Features
 import { muiTheme } from './features/mui-theme';
@@ -14,6 +15,6 @@ import { invoices } from './features/invoices';
 
 runHookApp({
   trace: 'compact',
-  services: [reactRoot, reactMUI, reactRouter],
+  services: [reactRoot, reactMUI, reactRouter, reactAxios],
   features: [muiTheme, layout, dashboard, users, invoices],
 }).catch((err) => console.error(`Boot: ${err.message}`));

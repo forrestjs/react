@@ -67,7 +67,7 @@ export const Layout = () => {
 
   // Compute drawer's stateful information:
   const hasDrawer = primaryListItems.length + secondaryListItems.length > 0;
-  const initialOpenState = useGetConfig('layout.drawer.isOpen', false);
+  const initialOpenState = useGetConfig('layout.drawer.isOpen', true);
   const [open, setOpen] = React.useState(initialOpenState);
   const handleDrawerOpen = () => setOpen(true);
   const handleDrawerClose = () => setOpen(false);
