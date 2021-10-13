@@ -1,6 +1,6 @@
 {
   "name": "@forrestjs/react-mui",
-  "version": "0.0.1-alpha.13",
+  "version": "0.0.1-alpha.14",
   "main": "dist/index.js",
   "files": [
     "dist",
@@ -13,10 +13,10 @@
     "build": "rimraf dist && cross-env NODE_ENV=production babel src --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,stories.js,__snapshots__"
   },
   "dependencies": {
-    "@mui/icons-material": "^5.0.3",
-    "@mui/material": "^5.0.3",
     "@emotion/react": "^11.4.1",
-    "@emotion/styled": "^11.3.0"
+    "@emotion/styled": "^11.3.0",
+    "@mui/icons-material": "^5.0.3",
+    "@mui/material": "^5.0.3"
   },
   "peerDependencies": {
     "react": "^17.0.2",
