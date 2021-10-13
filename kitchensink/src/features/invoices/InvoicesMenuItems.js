@@ -1,6 +1,6 @@
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import ReceiptIcon from '@material-ui/icons/Receipt';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import ReceiptIcon from '@mui/icons-material/Receipt';
 import ListItemLink from '../../components/ListItemLink';
 
 export const InvoicesMenuItems = () => (

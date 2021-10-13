@@ -1,6 +1,6 @@
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import AppsIcon from '@material-ui/icons/Apps';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import AppsIcon from '@mui/icons-material/Apps';
 import ListItemLink from '../../components/ListItemLink';
 
 export const DashboardMenuItems = () => (

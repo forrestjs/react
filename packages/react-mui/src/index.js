@@ -1,5 +1,5 @@
 import React from 'react';
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import * as hooks from './hooks';
 
 const reactMUI = ({ registerHook, registerAction, createHook, getConfig }) => {
@@ -10,7 +10,7 @@ const reactMUI = ({ registerHook, registerAction, createHook, getConfig }) => {
     handler: (App) => {
       const themeConfig = getConfig('react-mui.theme', {});
       const themeSource = createHook.waterfall(hooks.MUI_THEME, themeConfig);
-      const theme = createMuiTheme(themeSource.value);
+      const theme = createTheme(themeSource.value);
 
       return <ThemeProvider theme={theme} children={App} />;
     },
