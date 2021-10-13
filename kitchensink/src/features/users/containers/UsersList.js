@@ -1,5 +1,5 @@
-import List from '@material-ui/core/List';
-import ListItemText from '@material-ui/core/ListItemText';
+import List from '@mui/material/List';
+import ListItemText from '@mui/material/ListItemText';
 
 import ListItemLink from '../../../components/ListItemLink';
 import PageContent from '../../../components/PageContent';

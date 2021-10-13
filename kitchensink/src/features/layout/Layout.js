@@ -1,6 +1,6 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
+import { makeStyles } from '@mui/styles';
+import CssBaseline from '@mui/material/CssBaseline';
 
 import { useGetContext, useGetConfig } from '@forrestjs/react-root';
 import { LayoutDrawer } from './LayoutDrawer';

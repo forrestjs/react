@@ -1,4 +1,4 @@
-import { blueGrey } from '@material-ui/core/colors';
+import { blueGrey } from '@mui/material/colors';
 
 export const muiTheme = ({ registerAction }) => {
   registerAction({
