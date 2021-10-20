@@ -1,7 +1,6 @@
-import React from 'react';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
 import * as hooks from './hooks';
+import { MUIWrapper } from './MuiWrapper';
+export { useMUITheme } from './use-mui-theme';
 
 const reactMUI = ({ registerHook, registerAction, createHook, getConfig }) => {
   registerHook(hooks);
@@ -9,15 +8,30 @@ const reactMUI = ({ registerHook, registerAction, createHook, getConfig }) => {
   registerAction({
     hook: '$REACT_ROOT_WRAPPER',
     handler: (App) => {
-      const themeConfig = getConfig('react-mui.theme', {});
-      const themeSource = createHook.waterfall(hooks.MUI_THEME, themeConfig);
-      const theme = createTheme(themeSource.value);
+      // Retrieve the default theme:
+      const defaultThemeSource = createHook.waterfall(
+        hooks.MUI_SET_THEME,
+        getConfig('react-mui.theme', {}),
+      );
+
+      // Retrieve additional themes:
+      const themes = [
+        ...createHook.sync(hooks.MUI_ADD_THEME).map(($) => $[0]),
+        { ...defaultThemeSource.value, name: 'default' },
+      ].reduce((acc, curr) => ({ ...acc, [curr.name]: curr }), {});
+
+      // Retrieve the initial theme name:
+      const defaultThemeName = createHook.waterfall(
+        hooks.MUI_USE_THEME,
+        'default',
+      );
 
       return (
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
-          {App}
-        </ThemeProvider>
+        <MUIWrapper
+          app={App}
+          initialThemes={themes}
+          defaultTheme={defaultThemeName.value}
+        />
       );
     },
   });
