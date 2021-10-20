@@ -1,5 +1,6 @@
 import React from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
 import * as hooks from './hooks';
 
 const reactMUI = ({ registerHook, registerAction, createHook, getConfig }) => {
@@ -12,7 +13,12 @@ const reactMUI = ({ registerHook, registerAction, createHook, getConfig }) => {
       const themeSource = createHook.waterfall(hooks.MUI_THEME, themeConfig);
       const theme = createTheme(themeSource.value);
 
-      return <ThemeProvider theme={theme} children={App} />;
+      return (
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          {App}
+        </ThemeProvider>
+      );
     },
   });
 };

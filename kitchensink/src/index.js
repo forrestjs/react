@@ -12,9 +12,10 @@ import { layout } from './features/layout';
 import { dashboard } from './features/dashboard';
 import { users } from './features/users';
 import { invoices } from './features/invoices';
+import { login } from './features/login';
 
 runHookApp({
   trace: 'compact',
   services: [reactRoot, reactMUI, reactRouter, reactAxios],
-  features: [muiTheme, layout, dashboard, users, invoices],
+  features: [muiTheme, layout, dashboard, users, invoices, login],
 }).catch((err) => console.error(`Boot: ${err.message}`));
