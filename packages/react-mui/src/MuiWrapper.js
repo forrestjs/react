@@ -24,6 +24,8 @@ export const MUIWrapper = ({ defaultTheme, initialThemes, app }) => {
     addMUITheme,
   };
 
+  console.log({ ctx });
+
   return (
     <MUIThemeContext.Provider value={ctx}>
       <MUIThemeContext.Consumer>
