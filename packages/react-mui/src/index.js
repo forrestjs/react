@@ -1,3 +1,4 @@
+import React from 'react';
 import * as hooks from './hooks';
 import { MUIWrapper } from './MuiWrapper';
 export { useMUITheme } from './use-mui-theme';
