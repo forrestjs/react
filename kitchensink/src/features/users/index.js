@@ -14,7 +14,7 @@ export const users = ({ registerAction }) => {
     handler: () => ({
       exact: true,
       path: '/users',
-      component: UsersList,
+      element: <UsersList />,
     }),
   });
 
@@ -23,7 +23,7 @@ export const users = ({ registerAction }) => {
     handler: () => ({
       exact: true,
       path: '/users/:id',
-      component: UserDetails,
+      element: <UserDetails />,
     }),
   });
 

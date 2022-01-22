@@ -1,4 +1,4 @@
-import { Switch, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 export const LayoutRoutes = ({ items }) => {
   if (!items.length) {
@@ -20,10 +20,10 @@ export const LayoutRoutes = ({ items }) => {
   }
 
   return (
-    <Switch>
+    <Routes>
       {items.map((routeConfig, idx) => (
         <Route key={idx} {...routeConfig} />
       ))}
-    </Switch>
+    </Routes>
   );
 };

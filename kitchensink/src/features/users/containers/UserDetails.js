@@ -7,8 +7,8 @@ import PageItem from '../../../components/PageItem';
 
 import useUserDetails from '../state/use-user-details';
 
-export const UserDetails = ({ match }) => {
-  const { data } = useUserDetails(match.params.id);
+export const UserDetails = () => {
+  const { data } = useUserDetails();
 
   const pageTitle = data ? data.name : 'Loading...';
   const pageBody = data ? (
