@@ -28,7 +28,7 @@ import AppRoot from './AppRoot';
 
 // Your App should have one feature that implements the
 // REACT_ROOT_COMPONENT hook to provide the... root component:
-const rootEl = ['$REACT_ROOT_COMPONENT', <AppRoot />];
+const rootEl = ['$REACT_ROOT_COMPONENT', { component: AppRoot }];
 
 runHookApp({
   settings: {
