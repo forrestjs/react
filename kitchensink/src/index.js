@@ -16,6 +16,15 @@ import { invoices } from './features/invoices';
 
 runHookApp({
   trace: 'compact',
+  settings: {
+    layout: {
+      drawer: {
+        // disable: true,
+        open: true,
+        width: 300,
+      },
+    },
+  },
   services: [reactRoot, reactMUI, reactRouter, reactAxios],
   features: [
     muiTheme,
