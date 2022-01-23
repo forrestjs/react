@@ -29,13 +29,15 @@ const reactRoot = ({
     handler: () => {
       const { value: rootEl } = createHook.waterfall(
         hooks.REACT_ROOT_COMPONENT,
-        getConfig('reactRoot.component', defaultComponent),
+        getConfig('reactRoot.component', { component: defaultComponent }),
       );
 
-      const reactRoot = [
-        ...createHook.sync(hooks.REACT_ROOT_WRAPPER).map(($) => $[0].component),
-        HooksWrapper,
-      ].reduce(
+      const wrappers = createHook
+        .sync(hooks.REACT_ROOT_WRAPPER)
+        .map(($) => $[0].component);
+      wrappers.reverse();
+
+      const reactRoot = [...wrappers, HooksWrapper].reduce(
         (children, el) => React.createElement(el, { children }),
         React.createElement(rootEl.component),
       );

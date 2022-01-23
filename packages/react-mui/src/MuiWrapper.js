@@ -5,7 +5,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 
 export const MUIThemeContext = createContext();
 
-export const MUIWrapper = ({ defaultTheme, initialThemes, app }) => {
+export const MUIWrapper = ({ defaultTheme, initialThemes, children }) => {
   const [themes, setThemes] = useState(initialThemes);
   const [currentTheme, setMUITheme] = useState(initialThemes[defaultTheme]);
 
@@ -30,7 +30,7 @@ export const MUIWrapper = ({ defaultTheme, initialThemes, app }) => {
         {({ currentTheme }) => (
           <ThemeProvider theme={createTheme(currentTheme)}>
             <CssBaseline />
-            {app}
+            {children}
           </ThemeProvider>
         )}
       </MUIThemeContext.Consumer>
