@@ -18,6 +18,12 @@ const reactRoot = ({
 }) => {
   registerHook(hooks);
 
+  const HooksWrapper = ({ children }) => (
+    <GetConfig.Provider value={getConfig}>
+      <GetContext.Provider value={getContext}>{children}</GetContext.Provider>
+    </GetConfig.Provider>
+  );
+
   registerAction({
     hook: '$INIT_SERVICE',
     handler: () => {
@@ -26,13 +32,13 @@ const reactRoot = ({
         getConfig('reactRoot.component', defaultComponent),
       );
 
-      const { value: reactRoot } = createHook.waterfall(
-        hooks.REACT_ROOT_WRAPPER,
-        <GetConfig.Provider value={getConfig}>
-          <GetContext.Provider value={getContext}>{rootEl}</GetContext.Provider>
-        </GetConfig.Provider>,
+      const reactRoot = [
+        ...createHook.sync(hooks.REACT_ROOT_WRAPPER).map(($) => $[0].component),
+        HooksWrapper,
+      ].reduce(
+        (children, el) => React.createElement(el, { children }),
+        React.createElement(rootEl.component),
       );
-
       setContext('reactRoot.component', reactRoot);
     },
   });

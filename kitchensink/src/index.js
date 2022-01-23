@@ -20,8 +20,8 @@ runHookApp({
     layout: {
       drawer: {
         // disable: true,
-        open: true,
-        width: 300,
+        // open: true,
+        // width: 450,
       },
     },
   },
