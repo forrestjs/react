@@ -60,6 +60,6 @@ export const layout = ({
 
   registerAction({
     hook: '$REACT_ROOT_COMPONENT',
-    handler: () => <Layout />,
+    handler: { component: Layout },
   });
 };
