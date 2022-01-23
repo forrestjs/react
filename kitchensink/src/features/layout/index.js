@@ -5,6 +5,7 @@ export const layout = ({
   registerHook,
   registerAction,
   createHook,
+  getConfig,
   setContext,
 }) => {
   registerHook(hooks);
@@ -14,7 +15,7 @@ export const layout = ({
     handler: () => {
       const { value: layoutTitle } = createHook.waterfall(
         hooks.LAYOUT_TITLE,
-        'Dashboard',
+        getConfig('layout.title', 'Dashboard'),
       );
 
       const layoutContent = createHook
@@ -22,6 +23,21 @@ export const layout = ({
         .map((_) => _[0]);
 
       const layoutRoutes = createHook.sync(hooks.LAYOUT_ROUTE).map((_) => _[0]);
+
+      const { value: drawerWidth } = createHook.waterfall(
+        hooks.LAYOUT_DRAWER_WIDTH,
+        getConfig('layout.drawer.width', 240),
+      );
+
+      const { value: drawerDisable } = createHook.waterfall(
+        hooks.LAYOUT_DRAWER_DISABLE,
+        getConfig('layout.drawer.disable', false),
+      );
+
+      const { value: drawerOpen } = createHook.waterfall(
+        hooks.LAYOUT_DRAWER_OPEN,
+        getConfig('layout.drawer.open', false),
+      );
 
       const primaryListItems = createHook
         .sync(hooks.LAYOUT_DRAWER_PRIMARY_LIST_ITEMS)
@@ -34,6 +50,9 @@ export const layout = ({
       setContext('layout.title', layoutTitle);
       setContext('layout.content', layoutContent);
       setContext('layout.routes', layoutRoutes);
+      setContext('layout.drawer.width', drawerWidth);
+      setContext('layout.drawer.disable', drawerDisable);
+      setContext('layout.drawer.open', drawerOpen);
       setContext('layout.drawer.list.primary.items', primaryListItems);
       setContext('layout.drawer.list.secondary.items', secondaryListItems);
     },
@@ -41,6 +60,6 @@ export const layout = ({
 
   registerAction({
     hook: '$REACT_ROOT_COMPONENT',
-    handler: () => <Layout />,
+    handler: { component: Layout },
   });
 };

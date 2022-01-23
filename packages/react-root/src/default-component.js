@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const defaultComponent = (
+export const defaultComponent = () => (
   <div>
     No root component was defined.
     <br />

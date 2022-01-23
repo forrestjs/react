@@ -20,7 +20,7 @@ export const dashboard = ({
     handler: () => ({
       exact: true,
       path: '/',
-      component: DashboardContent,
+      element: <DashboardContent />,
     }),
   });
 

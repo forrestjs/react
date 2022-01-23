@@ -10,17 +10,19 @@ const reactRouter = ({
 }) => {
   registerHook(hooks);
 
+  const RouterWrapper = (props) => {
+    // Let customize the Router wrapper
+    const { value: Router } = createHook.waterfall(
+      hooks.REACT_ROUTER_COMPONENT,
+      getConfig('reactRouter.component', { component: BrowserRouter }),
+    );
+
+    return <Router.component {...props} />;
+  };
+
   registerAction({
     hook: '$REACT_ROOT_WRAPPER',
-    handler: (App) => {
-      // Let customize the Router wrapper
-      const { value: Router } = createHook.waterfall(
-        hooks.REACT_ROUTER_COMPONENT,
-        getConfig('reactRouter.component', BrowserRouter),
-      );
-
-      return <Router children={App} />;
-    },
+    handler: { component: RouterWrapper },
   });
 };
 

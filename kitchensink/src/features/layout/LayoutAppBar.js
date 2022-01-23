@@ -1,101 +1,61 @@
 import React from 'react';
-import clsx from 'clsx';
-import { makeStyles } from '@mui/styles';
+import { styled } from '@mui/material/styles';
 
-import AppBar from '@mui/material/AppBar';
+import MuiAppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-// import Badge from '@mui/material/Badge';
-
 import MenuIcon from '@mui/icons-material/Menu';
-// import NotificationsIcon from '@mui/icons-material/Notifications';
 
-// import { useGetContext, useGetConfig } from '../../services/react-root';
-// import { LayoutDrawer } from './LayoutDrawer';
-
-const drawerWidth = 240;
-
-const useStyles = makeStyles((theme) => ({
-  toolbar: {
-    paddingRight: 24, // keep right padding when drawer closed
-  },
-  toolbarIcon: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    padding: '0 8px',
-    ...theme.mixins.toolbar,
-  },
-  appBar: {
-    zIndex: theme.zIndex.drawer + 1,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-  },
-  appBarShift: {
+const AppBar = styled(MuiAppBar, {
+  shouldForwardProp: (prop) => !['open', 'drawerWidth'].includes(prop),
+})(({ theme, open, drawerWidth }) => ({
+  zIndex: theme.zIndex.drawer + 1,
+  transition: theme.transitions.create(['width', 'margin'], {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.leavingScreen,
+  }),
+  ...(open && {
     marginLeft: drawerWidth,
     width: `calc(100% - ${drawerWidth}px)`,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
     }),
-  },
-  menuButton: {
-    marginRight: 36,
-  },
-  menuButtonHidden: {
-    display: 'none',
-  },
-  title: {
-    flexGrow: 1,
-  },
-  appBarSpacer: theme.mixins.toolbar,
+  }),
 }));
 
 export const LayoutAppBar = ({
-  hasDrawer,
+  isDrawerEnabled,
+  drawerWidth,
   isDrawerOpen,
   handleDrawerOpen,
   title,
 }) => {
-  const classes = useStyles();
-
   return (
     <AppBar
-      position="absolute"
-      className={clsx(classes.appBar, isDrawerOpen && classes.appBarShift)}
+      position="fixed"
+      open={isDrawerOpen}
+      drawerWidth={isDrawerEnabled ? drawerWidth : 0}
     >
-      <Toolbar className={classes.toolbar}>
-        {hasDrawer && (
+      <Toolbar>
+        {isDrawerEnabled && (
           <IconButton
-            edge="start"
             color="inherit"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
-            className={clsx(
-              classes.menuButton,
-              isDrawerOpen && classes.menuButtonHidden,
-            )}
+            edge="start"
+            sx={{
+              marginRight: '36px',
+              ...(isDrawerOpen && { display: 'none' }),
+            }}
           >
             <MenuIcon />
           </IconButton>
         )}
-        <Typography
-          component="h1"
-          variant="h6"
-          color="inherit"
-          noWrap
-          className={classes.title}
-        >
+        <Typography variant="h6" noWrap component="div">
           {title}
         </Typography>
-        {/* <IconButton color="inherit">
-          <Badge badgeContent={4} color="secondary">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton> */}
       </Toolbar>
     </AppBar>
   );

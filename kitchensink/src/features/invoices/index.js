@@ -12,7 +12,7 @@ export const invoices = ({ registerAction }) => {
     hook: '$LAYOUT_ROUTE',
     handler: () => ({
       path: '/invoices',
-      component: InvoicesContent,
+      element: <InvoicesContent />,
     }),
   });
 
