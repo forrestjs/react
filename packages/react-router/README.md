@@ -1,3 +1,67 @@
 # @ForrestJS/react-root
 
-Work in progress...
+Provides your App with the famous declarative routing library [react-router](https://reactrouter.com/).
+
+[![Edit react-router](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/react-router-64sw4?fontsize=14&hidenavigation=1&theme=dark)
+
+## Add the Router Context
+
+Providing your App with a `react-router` Context it's as easy as to list the service into your ForrestJS manifest:
+
+```js
+// Import ForrestJS Services:
+import reactRoot from "@forrestjs/react-root";
+import reactRouter from "@forrestjs/react-router";
+
+// Run the ForrestJS App:
+runHooksApp({
+  ...
+  services: [reactRoot, reactRouter]
+})
+```
+
+> The order of the services really doesn't matter.
+
+## Add Routes
+
+Inside your `App.js` you add routes by following the [official documentation](https://reactrouter.com/docs/en/v6/examples/basic).
+
+> ForrestJS has absolutely nothing to do with how you build your components!
+
+```js
+import { Routes, Route } from 'react-router-dom';
+
+// Import my custom routes components:
+import { Home } from './Home';
+import { Page } from './Page';
+
+// Declare my routes v6 style:
+export const App = () => (
+  <Routes>
+    <Route path="/" element={<Home />} exact />
+    <Route path="/page/:id" element={<Page />} />
+  </Routes>
+);
+```
+
+## Change the Browser Component
+
+`react-root` offers different navigation styles based on the type of router that you use:
+
+- BrowserRouter
+- HashRouter
+- MemoryRouter
+
+By default the `BrowserRouter` is selected, but you can change this using the ForrestJS manifest configuration:
+
+```js
+import { HashBrowser } from 'react-router-dom';
+
+runHookApp({
+  config: {
+    reactRouter: {
+      component: HashBrowser,
+    },
+  },
+});
+```
