@@ -14,7 +14,9 @@ const reactRouter = ({
     // Let customize the Router wrapper
     const { value: Router } = createHook.waterfall(
       hooks.REACT_ROUTER_COMPONENT,
-      getConfig('reactRouter.component', { component: BrowserRouter }),
+      {
+        component: getConfig('reactRouter.component', BrowserRouter),
+      },
     );
 
     return <Router.component {...props} />;
