@@ -1,4 +1,4 @@
-# @ForrestJS/react-root
+# @ForrestJS/react-router
 
 Provides your App with the famous declarative routing library [react-router](https://reactrouter.com/).
 
