@@ -44,7 +44,7 @@ export const App = () => (
 );
 ```
 
-## Change the Browser Component
+## Set the Browser Component via Configuration
 
 `react-root` offers different navigation styles based on the type of router that you use:
 
@@ -65,3 +65,24 @@ runHookApp({
   },
 });
 ```
+
+[![Edit react-router-hash-config](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/react-router-hash-config-qmn3i?fontsize=14&hidenavigation=1&theme=dark)
+
+## Set the Browser Component in a Feature
+
+You can also override the default Router **AND** any config defined one by implementing the `$REACT_ROUTER_COMPONENT` hook:
+
+```js
+// Load a custom ReactRouter component and set it up
+// as a ForrestJS single hook Feature:
+import { HashRouter } from "react-router-dom";
+const customBrowser = ["$REACT_ROUTER_COMPONENT", { component: HashRouter }];
+
+// Add your new Feature into the ForrestJS' manifest:
+runHookApp({
+  ...
+  features: [app, customBrowser]
+});
+```
+
+[![Edit react-router-hash-hook](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/react-router-hash-hook-2hosh?fontsize=14&hidenavigation=1&theme=dark)
