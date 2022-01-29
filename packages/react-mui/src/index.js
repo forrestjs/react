@@ -10,7 +10,7 @@ const reactMUI = ({ registerHook, registerAction, createHook, getConfig }) => {
     // Retrieve the default theme:
     const defaultThemeSource = createHook.waterfall(
       hooks.MUI_SET_THEME,
-      getConfig('react-mui.theme', {}),
+      getConfig('reactMui.theme', {}),
     );
 
     // Retrieve additional themes:
