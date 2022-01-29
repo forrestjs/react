@@ -43,11 +43,6 @@ runHookApp({
 
 ## CodeSandbox
 
-<iframe src="https://codesandbox.io/embed/react-root-cqqlh?fontsize=14&hidenavigation=1&theme=dark"
-     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="kitchensink"
-     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-   ></iframe>
+<iframe src="https://codesandbox.io/embed/react-root-cqqlh?fontsize=14&hidenavigation=1&theme=dark" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="kitchensink" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
 
 [![Edit kitchensink](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/react-root-cqqlh?fontsize=14&hidenavigation=1&theme=dark)
