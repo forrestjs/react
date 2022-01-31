@@ -34,11 +34,15 @@ const reactRoot = ({
 
       const wrappers = createHook
         .sync(hooks.REACT_ROOT_WRAPPER)
-        .map(($) => $[0].component);
+        .map(($) => $[0]);
       wrappers.reverse();
 
-      const reactRoot = [...wrappers, HooksWrapper].reduce(
-        (children, el) => React.createElement(el, { children }),
+      const reactRoot = [...wrappers, { component: HooksWrapper }].reduce(
+        (children, wrapper) =>
+          React.createElement(wrapper.component, {
+            ...(wrapper.props || {}),
+            children,
+          }),
         React.createElement(rootEl.component),
       );
       setContext('reactRoot.component', reactRoot);
