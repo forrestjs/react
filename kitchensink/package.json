@@ -5,10 +5,10 @@
     "README.md"
   ],
   "dependencies": {
-    "@forrestjs/hooks": "4.0.0-alpha.18",
-    "@forrestjs/react-root": "0.1.0",
-    "@forrestjs/react-router": "0.1.0",
-    "@forrestjs/react-mui": "0.1.0",
+    "@forrestjs/hooks": "4.0.0",
+    "@forrestjs/react-root": "0.4.0-alpha.0",
+    "@forrestjs/react-router": "0.4.0-alpha.0",
+    "@forrestjs/react-mui": "0.4.0-alpha.0",
     "axios": "^0.25.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -20,7 +20,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "clean": "rimraf node_modules && rimraf build"
+    "clean": "rimraf build && rimraf node_modules"
   },
   "eslintConfig": {
     "extends": [

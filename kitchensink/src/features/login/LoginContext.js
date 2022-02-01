@@ -1,16 +1,13 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useState } from 'react';
 
-const INITIAL_STATE = {
-  user: null
+export const LoginContext = createContext();
+
+export const LoginWrapper = (props) => {
+  const [user, setUser] = useState(null);
+  const login = (user) => setUser(user);
+  const logout = () => setUser(null);
+
+  return <LoginContext.Provider {...props} value={{ user, login, logout }} />;
 };
 
-export const LoginContext = createContext(INITIAL_STATE);
-
-export const LoginWrapper = (App) => (
-  <LoginContext.Provider value={INITIAL_STATE} children={App} />
-);
-
-export const useLogin = () => {
-  useContext(LoginContext);
-  return { user: "aaa" };
-};
+export const useLogin = () => useContext(LoginContext);
