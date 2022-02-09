@@ -24,7 +24,7 @@ export const AppRoot = () => {
 Now we can package our App using ForrestJS:
 
 ```js
-import { runHookApp } from '@forrestjs/hooks';
+import forrestjs from '@forrestjs/core';
 import reactRoot, { getConfig } from '@forrestjs/react-root';
 import { AppRoot } from './AppRoot';
 
@@ -32,15 +32,17 @@ import { AppRoot } from './AppRoot';
 // REACT_ROOT_COMPONENT hook to provide the... root component:
 const rootEl = ['$REACT_ROOT_COMPONENT', { component: AppRoot }];
 
-runHookApp({
-  settings: {
-    welcome: {
-      message: 'Hello World',
+forrestjs
+  .run({
+    settings: {
+      welcome: {
+        message: 'Hello World',
+      },
     },
-  },
-  services: [reactRoot],
-  features: [rootEl],
-}).catch((err) => console.error(`Boot: ${err.message}`));
+    services: [reactRoot],
+    features: [rootEl],
+  })
+  .catch((err) => console.error(`Boot: ${err.message}`));
 ```
 
 ## Add Application's Wrappers
@@ -91,10 +93,10 @@ Now we can decorate our App with this wrapper using the hooks in `index.js`:
 import { AppWrapper } from './AppWrapper';
 
 // Create a ForrestJS single hook feature:
-const wrap1 = [
-  '$REACT_ROOT_WRAPPER',
-  { component: AppWrapper }
-];
+const wrap1 = {
+  target:'$REACT_ROOT_WRAPPER',
+  handler:{ component: AppWrapper }
+};
 
 // Add the feature to the App, the order doesn't matter:
 runHookApp({
