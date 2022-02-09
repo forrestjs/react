@@ -4,18 +4,18 @@ import { InvoicesDashboard } from './InvoicesDashboard';
 
 export const invoices = () => [
   {
-    targets: '$LAYOUT_DRAWER_PRIMARY_LIST_ITEMS',
+    target: '$LAYOUT_DRAWER_PRIMARY_LIST_ITEMS',
     handler: () => InvoicesMenuItems,
   },
   {
-    targets: '$LAYOUT_ROUTE',
+    target: '$LAYOUT_ROUTE',
     handler: () => ({
       path: '/invoices',
       element: <InvoicesContent />,
     }),
   },
   {
-    targets: '$DASHBOARD_ITEM',
+    target: '$DASHBOARD_ITEM',
     handler: () => ({
       title: 'Invoices',
       lg: 8,

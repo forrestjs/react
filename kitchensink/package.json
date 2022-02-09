@@ -6,9 +6,9 @@
   ],
   "dependencies": {
     "@forrestjs/core": "4.2.0",
-    "@forrestjs/react-root": "0.5.0-alpha.1",
-    "@forrestjs/react-router": "0.5.0-alpha.1",
-    "@forrestjs/react-mui": "0.5.0-alpha.1",
+    "@forrestjs/react-root": "0.6.0",
+    "@forrestjs/react-router": "0.6.0",
+    "@forrestjs/react-mui": "0.6.0",
     "axios": "^0.25.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
