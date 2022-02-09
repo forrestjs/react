@@ -1,27 +1,32 @@
 import React from 'react';
-import * as hooks from './hooks';
+import * as targets from './targets';
 import { MUIWrapper } from './MuiWrapper';
 export { useMUITheme } from './use-mui-theme';
 
-const reactMUI = ({ registerHook, registerAction, createHook, getConfig }) => {
-  registerHook(hooks);
+const reactMUI = ({
+  registerTargets,
+  registerAction,
+  createExtension,
+  getConfig,
+}) => {
+  registerTargets(targets);
 
   const AppWrapper = (props) => {
     // Retrieve the default theme:
-    const defaultThemeSource = createHook.waterfall(
-      hooks.MUI_SET_THEME,
+    const defaultThemeSource = createExtension.waterfall(
+      targets.MUI_SET_THEME,
       getConfig('reactMui.theme', {}),
     );
 
     // Retrieve additional themes:
     const themes = [
-      ...createHook.sync(hooks.MUI_ADD_THEME).map(($) => $[0]),
+      ...createExtension.sync(targets.MUI_ADD_THEME).map(($) => $[0]),
       { ...defaultThemeSource.value, name: 'default' },
     ].reduce((acc, curr) => ({ ...acc, [curr.name]: curr }), {});
 
     // Retrieve the initial theme name:
-    const defaultThemeName = createHook.waterfall(
-      hooks.MUI_USE_THEME,
+    const defaultThemeName = createExtension.waterfall(
+      targets.MUI_USE_THEME,
       getConfig('reactMui.use', 'default'),
     );
 
@@ -35,7 +40,7 @@ const reactMUI = ({ registerHook, registerAction, createHook, getConfig }) => {
   };
 
   registerAction({
-    hook: '$REACT_ROOT_WRAPPER',
+    target: '$REACT_ROOT_WRAPPER',
     handler: { component: AppWrapper },
   });
 };

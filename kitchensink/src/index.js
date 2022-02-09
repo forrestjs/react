@@ -1,4 +1,4 @@
-import { runHookApp } from '@forrestjs/hooks';
+import forrestjs from '@forrestjs/core';
 
 // Services
 import reactRoot from '@forrestjs/react-root';
@@ -14,17 +14,19 @@ import { users } from './features/users';
 import { invoices } from './features/invoices';
 import { login } from './features/login';
 
-runHookApp({
-  // trace: 'compact',
-  settings: {
-    layout: {
-      drawer: {
-        // disable: true,
-        // open: true,
-        // width: 450,
+forrestjs
+  .run({
+    // trace: 'compact',
+    settings: {
+      layout: {
+        drawer: {
+          // disable: true,
+          // open: true,
+          // width: 450,
+        },
       },
     },
-  },
-  services: [reactRoot, reactMUI, reactRouter, reactAxios],
-  features: [muiTheme, layout, dashboard, users, invoices, login],
-}).catch((err) => console.error(`Boot: ${err.message}`));
+    services: [reactRoot, reactMUI, reactRouter, reactAxios],
+    features: [muiTheme, layout, dashboard, users, invoices, login],
+  })
+  .catch((err) => console.error(`Boot: ${err.message}`));

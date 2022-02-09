@@ -1,19 +1,19 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import * as hooks from './hooks';
+import * as targets from './targets';
 
 const reactRouter = ({
-  registerHook,
+  registerTargets,
   registerAction,
-  createHook,
+  createExtension,
   getConfig,
 }) => {
-  registerHook(hooks);
+  registerTargets(targets);
 
   const RouterWrapper = (props) => {
     // Let customize the Router wrapper
-    const { value: Router } = createHook.waterfall(
-      hooks.REACT_ROUTER_COMPONENT,
+    const { value: Router } = createExtension.waterfall(
+      targets.REACT_ROUTER_COMPONENT,
       {
         component: getConfig('reactRouter.component', BrowserRouter),
       },
@@ -23,7 +23,7 @@ const reactRouter = ({
   };
 
   registerAction({
-    hook: '$REACT_ROOT_WRAPPER',
+    target: '$REACT_ROOT_WRAPPER',
     handler: { component: RouterWrapper },
   });
 };

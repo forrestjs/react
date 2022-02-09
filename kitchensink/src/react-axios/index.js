@@ -1,12 +1,9 @@
 import React from 'react';
-import * as hooks from './hooks';
 import { AxiosProvider } from './AxiosProvider';
 
 export { useAxios } from './use-axios';
 
-const reactRouter = ({ registerHook, registerAction, getConfig }) => {
-  registerHook(hooks);
-
+const reactRouter = ({ getConfig }) => {
   const AppWrapper = (props) => {
     const baseUrl = getConfig(
       'axios.baseUrl',
@@ -20,10 +17,10 @@ const reactRouter = ({ registerHook, registerAction, getConfig }) => {
     return <AxiosProvider {...props} value={value} />;
   };
 
-  registerAction({
-    hook: '$REACT_ROOT_WRAPPER',
+  return {
+    target: '$REACT_ROOT_WRAPPER',
     handler: { component: AppWrapper },
-  });
+  };
 };
 
 export { reactRouter };
