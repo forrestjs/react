@@ -1,42 +1,36 @@
-import * as hooks from './hooks';
+import * as targets from './targets';
 import { DashboardMenuItems } from './DashboardMenuItems';
 import { DashboardContent } from './DashboardContent';
 
-export const dashboard = ({
-  registerHook,
-  registerAction,
-  createHook,
-  setContext,
-}) => {
-  registerHook(hooks);
+export const dashboard = ({ registerTargets, createExtension, setContext }) => {
+  registerTargets(targets);
 
-  registerAction({
-    hook: '$LAYOUT_DRAWER_PRIMARY_LIST_ITEMS',
-    handler: () => DashboardMenuItems,
-  });
-
-  registerAction({
-    hook: '$LAYOUT_ROUTE',
-    handler: () => ({
-      exact: true,
-      path: '/',
-      element: <DashboardContent />,
-    }),
-  });
-
-  registerAction({
-    hook: '$LAYOUT_TITLE',
-    handler: () => 'JSON Placeholder UI',
-  });
-
-  registerAction({
-    hook: '$INIT_SERVICE',
-    handler: () => {
-      const dashboardItems = createHook
-        .sync(hooks.DASHBOARD_ITEM)
-        .map((_) => _[0]);
-
-      setContext('dashboard.items', dashboardItems);
+  return [
+    {
+      target: '$LAYOUT_DRAWER_PRIMARY_LIST_ITEMS',
+      handler: () => DashboardMenuItems,
     },
-  });
+    {
+      target: '$LAYOUT_ROUTE',
+      handler: () => ({
+        exact: true,
+        path: '/',
+        element: <DashboardContent />,
+      }),
+    },
+    {
+      target: '$LAYOUT_TITLE',
+      handler: () => 'JSON Placeholder UI',
+    },
+    {
+      target: '$INIT_SERVICE',
+      handler: () => {
+        const dashboardItems = createExtension
+          .sync(targets.DASHBOARD_ITEM)
+          .map((_) => _[0]);
+
+        setContext('dashboard.items', dashboardItems);
+      },
+    },
+  ];
 };

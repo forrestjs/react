@@ -14,7 +14,7 @@ import reactRoot from "@forrestjs/react-root";
 import reactRouter from "@forrestjs/react-router";
 
 // Run the ForrestJS App:
-runHooksApp({
+forrestjs.run({
   ...
   services: [reactRoot, reactRouter]
 })
@@ -57,7 +57,7 @@ By default the `BrowserRouter` is selected, but you can change this using the Fo
 ```js
 import { HashBrowser } from 'react-router-dom';
 
-runHookApp({
+forrestjs.run({
   config: {
     reactRouter: {
       component: HashBrowser,
@@ -79,7 +79,7 @@ import { HashRouter } from "react-router-dom";
 const customBrowser = ["$REACT_ROUTER_COMPONENT", { component: HashRouter }];
 
 // Add your new Feature into the ForrestJS' manifest:
-runHookApp({
+forrestjs.run({
   ...
   features: [app, customBrowser]
 });

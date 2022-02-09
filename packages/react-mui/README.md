@@ -13,7 +13,7 @@ The following example shows how to pack a MUI theme as a ForrestJS Feature. But 
 ```js
 import { teal } from '@mui/material/colors';
 
-runHookApp({
+forrestjs.run({
   settings: {
     reactMui: {
       theme: {
@@ -36,16 +36,16 @@ Of course, you can pack your custom theme as a ForrestJS feature. Further on, we
 import { teal } from '@mui/material/colors';
 
 // Package the default theme as a ForrestJS single hook Feature:
-const muiTheme = [
-  '$MUI_SET_THEME',
-  (defaultTheme) => ({
+const muiTheme = {
+  target: '$MUI_SET_THEME',
+  handler: (defaultTheme) => ({
     palette: { primary: teal },
     typography: { h1: { fontSize: 20 } },
   }),
-];
+};
 
 // Build you ForrestJS App Manifest:
-runHookApp({
+forrestjs.run({
   services: [reactRoot, reactMUI],
   features: [muiTheme, myApp],
 });
@@ -59,7 +59,7 @@ You can add multiple themes and switch between them at runtime:
 import { teal, orange } from '@mui/material/colors';
 
 const themeTeal = {
-  hook: '$MUI_ADD_THEME',
+  target: '$MUI_ADD_THEME',
   handler: {
     name: 'teal',
     palette: { primary: teal },
@@ -67,14 +67,14 @@ const themeTeal = {
 };
 
 const themeOrange = {
-  hook: '$MUI_ADD_THEME',
+  target: '$MUI_ADD_THEME',
   handler: {
     name: 'orange',
     palette: { primary: orange },
   },
 };
 
-runHookApp({
+forrestjs.run({
   services: [reactRoot, reactMUI],
   features: [myApp, themeTeal, themeOrange],
 });
@@ -89,7 +89,7 @@ But in case you have multiple themes, you can select the starting theme in the m
 ### By Manifest
 
 ```js
-runHookApp({
+forrestjs.run({
   settings: {
     reactMui: {
       use: 'myThemeName',
@@ -102,11 +102,11 @@ runHookApp({
 
 ```js
 const startingTheme = {
-  hook: '$MUI_USE_THEME',
+  target: '$MUI_USE_THEME',
   handler: 'myThemeName',
 };
 
-runHookApp({
+forrestjs.run({
   features: [..., startingTheme],
 });
 ```
