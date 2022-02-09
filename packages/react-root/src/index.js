@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import * as hooks from './hooks';
+import * as targets from './targets';
 import { defaultComponent } from './default-component';
 import { ForrestJSContext } from './forrestjs-provider';
 
@@ -12,11 +12,11 @@ export {
 
 const reactRoot = ({
   registerAction,
-  createHook,
+  createExtension,
   getConfig,
   getContext,
   setContext,
-  registerHook,
+  registerTargets,
 }) => {
   /**
    * This component renders a list of wrappers definition {component, props?} recursively
@@ -37,20 +37,23 @@ const reactRoot = ({
     });
   };
 
-  registerHook(hooks);
+  registerTargets(targets);
 
   registerAction({
-    hook: '$INIT_SERVICE',
+    target: '$INIT_SERVICE',
     handler: () => {
       // Get the root definition (component + props)
-      const { value: root } = createHook.waterfall(hooks.REACT_ROOT_COMPONENT, {
-        component: getConfig('reactRoot.component', defaultComponent),
-        props: getConfig('reactRoot.props', {}),
-      });
+      const { value: root } = createExtension.waterfall(
+        targets.REACT_ROOT_COMPONENT,
+        {
+          component: getConfig('reactRoot.component', defaultComponent),
+          props: getConfig('reactRoot.props', {}),
+        },
+      );
 
       // Get the wrappers definitions (component + props)
-      const wrappers = createHook
-        .sync(hooks.REACT_ROOT_WRAPPER)
+      const wrappers = createExtension
+        .sync(targets.REACT_ROOT_WRAPPER)
         .map(($) => $[0]);
 
       setContext('reactRoot', { root: root, wrappers });
@@ -58,7 +61,7 @@ const reactRoot = ({
   });
 
   registerAction({
-    hook: '$START_SERVICE',
+    target: '$START_SERVICE',
     handler: (forrestJSContext) => {
       const rootId = getConfig('reactRoot.target', 'root');
       const root = getContext('reactRoot.root');
