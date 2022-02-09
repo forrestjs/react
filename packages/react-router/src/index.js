@@ -23,7 +23,7 @@ const reactRouter = ({
   };
 
   registerAction({
-    hook: '$REACT_ROOT_WRAPPER',
+    target: '$REACT_ROOT_WRAPPER',
     handler: { component: RouterWrapper },
   });
 };
