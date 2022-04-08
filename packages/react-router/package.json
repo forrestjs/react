@@ -13,7 +13,7 @@
     "build": "rimraf dist && cross-env NODE_ENV=production babel src --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,stories.js,__snapshots__"
   },
   "dependencies": {
-    "react-router-dom": "^6.2.1"
+    "react-router-dom": "^6.3.0"
   },
   "eslintConfig": {
     "extends": [
