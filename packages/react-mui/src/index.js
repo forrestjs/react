@@ -3,6 +3,10 @@ import * as targets from './targets';
 import { MUIWrapper } from './MuiWrapper';
 export { useMUITheme } from './use-mui-theme';
 
+/**
+ * @param {ForrestJSContext} ctx
+ * @returns {Array.<ForrestJSExtension>}
+ */
 const reactMUI = ({
   registerTargets,
   registerAction,

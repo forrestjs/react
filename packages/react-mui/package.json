@@ -2,6 +2,7 @@
   "name": "@forrestjs/react-mui",
   "version": "0.7.0",
   "main": "dist/index.js",
+  "types": "types/index.d.ts",
   "files": [
     "dist",
     "README.md"
@@ -10,7 +11,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "clean": "rimraf node_modules && rimraf dist",
-    "build": "rimraf dist && cross-env NODE_ENV=production babel src --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,stories.js,__snapshots__"
+    "build": "npm run types && rimraf dist && cross-env NODE_ENV=production babel src --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,stories.js,__snapshots__",
+    "types": "rimraf types && npx -p typescript tsc src/index.js --declaration --allowJs --emitDeclarationOnly --outDir types --skipLibCheck"
   },
   "dependencies": {
     "@emotion/react": "^11.7.1",
@@ -39,5 +41,8 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "devDependencies": {
+    "typescript": "^4.8.4"
   }
 }

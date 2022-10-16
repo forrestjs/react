@@ -2,6 +2,10 @@ import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import * as targets from './targets';
 
+/**
+ * @param {ForrestJSContext} ctx
+ * @returns {Array.<ForrestJSExtension>}
+ */
 const reactRouter = ({
   registerTargets,
   registerAction,

@@ -10,6 +10,10 @@ export {
   useGetConfig,
 } from './forrestjs-provider';
 
+/**
+ * @param {ForrestJSContext} ctx
+ * @returns {Array.<ForrestJSExtension>}
+ */
 const reactRoot = ({
   registerAction,
   createExtension,
