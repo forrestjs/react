@@ -4,6 +4,7 @@
     "boot": "npm install && lerna bootstrap",
     "clean": "lerna run clean && lerna clean --yes && rm -rf node_modules",
     "build": "lerna run build",
+    "types": "lerna run types",
     "deploy": "lerna run build && lerna publish",
     "deploy:all": "lerna run build && lerna publish --force-publish"
   },
